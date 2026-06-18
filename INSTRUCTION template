@@ -1,0 +1,164 @@
+# IoT-Based Laser Security System: Real-Time Intrusion Alerting via ESP32 and Telegram Bot
+
+## Overview
+
+This project implements an IoT-based laser security system using an ESP32 microcontroller, laser transmitter, LDR sensor, and Telegram Bot integration. The system continuously monitors a laser beam and detects intrusions when the beam is interrupted.
+
+Upon intrusion detection, the ESP32 activates a local alarm and instantly sends real-time notifications to authorized users through Telegram Messenger. The system also provides periodic status updates indicating normal operation.
+
+## Features
+
+* Real-time intrusion detection using Laser and LDR
+* Instant Telegram alert notifications
+* Multi-user Telegram notification support
+* Audible buzzer alarm
+* Visual LED indication
+* NTP-based time synchronization
+* ESP32 Wi-Fi connectivity
+* Low-cost and scalable security solution
+
+## Hardware Components
+
+| Component               | Quantity    |
+| ----------------------- | ----------- |
+| ESP32 Development Board | 1           |
+| Laser Module            | 1           |
+| LDR Sensor              | 1           |
+| Buzzer                  | 1           |
+| LED                     | 1           |
+| Breadboard              | 1           |
+| Jumper Wires            | As Required |
+| Power Supply            | 1           |
+
+## Pin Configuration
+
+| Function                     | GPIO Pin |
+| ---------------------------- | -------- |
+| LDR Sensor                   | GPIO 34  |
+| Buzzer                       | GPIO 25  |
+| Status LED                   | GPIO 2   |
+| Laser Module                 | GPIO 26  |
+| SDA                          | GPIO 21  |
+| SCL                          | GPIO 22  |
+| Arm/Disarm Button (Optional) | GPIO 14  |
+| Auxiliary Input (Optional)   | GPIO 12  |
+
+## Working Principle
+
+1. The laser continuously illuminates the LDR.
+2. The ESP32 monitors the LDR value.
+3. When the laser beam is interrupted, the sensor reading changes.
+4. The ESP32 identifies the interruption as an intrusion event.
+5. The buzzer and LED are activated.
+6. A Telegram notification containing the intrusion time is sent to registered users.
+7. When the beam is restored, the alarm is reset automatically.
+
+## Telegram Bot Configuration
+
+### Create a Telegram Bot
+
+1. Open Telegram.
+
+2. Search for **@BotFather**.
+
+3. Start a chat with BotFather.
+
+4. Send:
+
+   /newbot
+
+5. Enter a Bot Name.
+
+6. Enter a unique Bot Username ending with "bot".
+
+7. BotFather will generate a Bot API Token.
+
+Example:
+
+```cpp
+String botToken = "YOUR_BOT_TOKEN";
+```
+
+### Obtain Chat ID
+
+1. Search for **@userinfobot** or **@IDBot**.
+2. Start the bot.
+3. Send any message.
+4. The bot will display your Chat ID.
+
+Example:
+
+```cpp
+String chatID1 = "YOUR_CHAT_ID";
+String chatID2 = "SECOND_USER_CHAT_ID";
+```
+
+### Connect the Bot
+
+1. Open Telegram.
+2. Search for your bot username.
+3. Start the bot.
+4. Send a test message.
+5. Upload the token and chat IDs into the ESP32 sketch.
+
+## Code Configuration
+
+Replace the placeholders below:
+
+```cpp
+const char* ssid = "YOUR_WIFI_NAME";
+const char* password = "YOUR_WIFI_PASSWORD";
+
+String botToken = "YOUR_BOT_TOKEN";
+
+String chatID1 = "FIRST_PERSON_CHAT_ID";
+String chatID2 = "SECOND_PERSON_CHAT_ID";
+```
+
+## Sample Alert Message
+
+```text
+⚠ Intrusion Detected at 14:25:33
+```
+
+## Sample Safe Status Message
+
+```text
+✅ No Breach Detected
+```
+
+## Literature Review
+
+### 1. Laser Light Security Alert System using ESP32-CAM with Integration of Telegram IoT
+
+Published in the International Journal of Advanced Research in Science, Communication and Technology (IJARSCT), 2025. The work demonstrates real-time alert generation through Telegram-based communication integrated with ESP32 hardware platforms.
+
+### 2. Security System in a Private Room Using ESP32 Microcontroller with Telegram Bot
+
+ResearchGate, 2025. The study presents a room security solution utilizing ESP32 and Telegram Bot technology for remote monitoring and intrusion notification.
+
+### 3. Laser Based Security System
+
+IARJSET, 2021. This research explores the implementation of laser beam interruption techniques for security applications and intrusion detection.
+
+### 4. ESP32 Laser Tripwire Alarm
+
+Robocraze. The project demonstrates a practical laser tripwire alarm using ESP32 hardware for real-time breach detection and alerting.
+
+## Future Improvements
+
+* Mobile application integration
+* Cloud dashboard monitoring
+* Camera-based image capture
+* GSM backup notifications
+* Battery backup system
+* Multiple security zones
+* Event logging and analytics
+
+## Author
+
+Vipul Borkar
+
+B.Tech Electronics and Telecommunication Engineering
+
+Embedded Systems | IoT | ESP32 | PCB Design
